@@ -19,6 +19,7 @@ export const Panel = styled.div`
   float: right;
   width: 80%;
   height: 100vh;
+  overflow-y: auto;
 
   @media (min-width: 620px) {
     width: max(500px, 40%);

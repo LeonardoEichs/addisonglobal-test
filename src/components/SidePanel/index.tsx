@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { SelectedItemType } from "ts/types";
 
 import { DarkButton } from "components/Button";
@@ -23,7 +24,12 @@ function SidePanel({
   selectedItems,
   setSelectedItems,
 }: SidePanelProps) {
-  if (!isSidePanelOpen) return null;
+  if (!isSidePanelOpen) {
+    document.body.style.overflow = "scroll";
+    return null;
+  } else {
+    document.body.style.overflow = "hidden";
+  }
   return (
     <Container>
       <Panel>
