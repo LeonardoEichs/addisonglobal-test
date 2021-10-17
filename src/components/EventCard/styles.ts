@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  border: 2px solid var(--gray-200);
-  display: flex;
-  flex-direction: column;
-  font-size: 0.4rem;
-`;
 export const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -21,7 +15,7 @@ export const MarketHeader = styled.h1`
   font-size: 1rem;
   font-weight: 500;
 `;
-export const Content = styled.div`
+export const MarketCard = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -36,5 +30,16 @@ export const SelectionContainer = styled.div`
   justify-content: space-between;
 
   & > * {
+  }
+`;
+
+export const Container = styled.div`
+  border: 2px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.4rem;
+
+  & > ${MarketCard} {
+    border-top: 2px solid var(--gray-200);
   }
 `;

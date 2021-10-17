@@ -6,7 +6,7 @@ import SidePanel from "components/SidePanel";
 import Header from "components/Header";
 
 function App() {
-  const [isSidePanelOpen, setIsSidePanelOpen] = useState<boolean>(true);
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState<boolean>(false);
 
   return (
     <>

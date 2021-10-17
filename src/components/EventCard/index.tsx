@@ -1,39 +1,39 @@
-import { ReactNode } from "react";
+import { EventType } from "ts/types";
 
 import {
   Container,
   Header,
-  Content,
+  MarketCard,
   MarketHeader,
   SelectionContainer,
 } from "./styles";
 
 import { WhiteButton } from "components/Button";
 
-function EventCard() {
+interface EventCardProp {
+  event: EventType;
+}
+
+function EventCard({ event }: EventCardProp) {
   return (
     <Container>
       <Header>
-        <h1>Man. United vs Chelsea</h1>
+        <h1>{event.name}</h1>
       </Header>
       <hr />
-      <Content>
-        <MarketHeader>To WIN</MarketHeader>
-        <SelectionContainer>
-          <WhiteButton>
-            <p>Arsenal</p>
-            <p>1.2</p>
-          </WhiteButton>
-          <WhiteButton>
-            <p>Arsenal</p>
-            <p>1.2</p>
-          </WhiteButton>
-          <WhiteButton>
-            <p>Arsenal</p>
-            <p>1.2</p>
-          </WhiteButton>
-        </SelectionContainer>
-      </Content>
+      {event.markets.map((market) => (
+        <MarketCard key={market.id}>
+          <MarketHeader>{market.name}</MarketHeader>
+          <SelectionContainer>
+            {market.selections.map((selection) => (
+              <WhiteButton>
+                <p>{selection.name}</p>
+                <p>{selection.price}</p>
+              </WhiteButton>
+            ))}
+          </SelectionContainer>
+        </MarketCard>
+      ))}
     </Container>
   );
 }
