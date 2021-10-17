@@ -1,8 +1,8 @@
 import { Container, Bar } from "./styles";
 
-function HamburguerMenu() {
+function HamburguerMenu({ ...rest }) {
   return (
-    <Container>
+    <Container {...rest}>
       <Bar></Bar>
       <Bar></Bar>
       <Bar></Bar>

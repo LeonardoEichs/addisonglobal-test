@@ -15,7 +15,7 @@ export const Panel = styled.div`
   display: flex;
   flex-direction: column;
   align-items: end;
-  padding: 1.25rem;
+  padding: 0 1.25rem;
   float: right;
   width: 80%;
   height: 100vh;

@@ -3,6 +3,7 @@ import GlobalStyles from "styles/globalStyles";
 
 import EventList from "pages/EventList";
 import SidePanel from "components/SidePanel";
+import Header from "components/Header";
 
 function App() {
   const [isSidePanelOpen, setIsSidePanelOpen] = useState<boolean>(true);
@@ -14,7 +15,9 @@ function App() {
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
       />
-      <EventList />
+      <EventList
+        header={<Header openSidePanel={() => setIsSidePanelOpen(true)} />}
+      />
     </>
   );
 }

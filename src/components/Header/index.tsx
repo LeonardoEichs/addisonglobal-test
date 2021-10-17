@@ -1,12 +1,16 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 import { Container } from "./styles";
 import HamburguerMenu from "components/HamburguerMenu";
 
-function Header() {
+interface HeaderProps {
+  openSidePanel: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Header({ openSidePanel }: HeaderProps) {
   return (
     <Container>
-      <HamburguerMenu />
+      <HamburguerMenu onClick={openSidePanel} />
     </Container>
   );
 }

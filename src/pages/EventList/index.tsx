@@ -1,14 +1,17 @@
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 import { Container, ContentView } from "./styles";
 
-import Header from "components/Header";
 import EventCard from "components/EventCard";
 
-function EventList() {
+interface EventListProps {
+  header: ReactNode;
+}
+
+function EventList({ header }: EventListProps) {
   return (
     <Container>
-      <Header />
+      {header}
       <ContentView>
         <EventCard />
         <EventCard />
