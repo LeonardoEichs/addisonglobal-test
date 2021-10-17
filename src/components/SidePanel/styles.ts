@@ -23,15 +23,13 @@ export const Panel = styled.div`
   span {
     font-size: 3rem;
     color: var(--gray-800);
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 
-export const SelectedItemsDisplay = styled.div`
-  width: 100%;
-  margin-top: 1.5rem;
-  display: flex;
-  flex-direction: column;
-`;
 export const SelectedItems = styled.div`
   width: 90%;
   display: flex;
@@ -47,5 +45,16 @@ export const SelectedItems = styled.div`
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--gray-800);
+  }
+`;
+
+export const SelectedItemsDisplay = styled.div`
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  & > ${SelectedItems} {
+    margin-bottom: 1.5rem;
   }
 `;
