@@ -7,7 +7,14 @@ export const ContentView = styled.div`
   flex-direction: column;
   margin: 1.5rem 2rem;
 
+  @media (min-width: 520px) {
+    align-items: center;
+  }
+
   & > * {
     margin-bottom: 1rem;
+    @media (min-width: 520px) {
+      width: max(540px, 50%);
+    }
   }
 `;

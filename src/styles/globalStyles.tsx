@@ -24,6 +24,7 @@ const GlobalStyles = createGlobalStyle`
         background: var(--gray-50);
         min-height: 100vh;
         max-width: 100vw;
+        min-width: 320px
     }
 
     body,

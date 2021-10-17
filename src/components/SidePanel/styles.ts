@@ -20,6 +20,10 @@ export const Panel = styled.div`
   width: 80%;
   height: 100vh;
 
+  @media (min-width: 620px) {
+    width: max(500px, 40%);
+  }
+
   span {
     font-size: 3rem;
     color: var(--gray-800);
