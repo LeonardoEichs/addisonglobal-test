@@ -1,16 +1,17 @@
-import { useEffect, useState, ReactNode } from "react";
+import React, { useEffect, useState, ReactNode, ReactElement } from "react";
 
-import { EventType } from "ts/types";
+import { EventType, SelectedItemType } from "ts/types";
 
 import { Container, ContentView } from "./styles";
 
 import EventCard from "components/EventCard";
 
 interface EventListProps {
-  header: ReactNode;
+  header: ReactElement;
+  card: ReactElement;
 }
 
-function EventList({ header }: EventListProps) {
+function EventList({ header, card }: EventListProps) {
   const [events, setEvents] = useState<EventType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -27,7 +28,7 @@ function EventList({ header }: EventListProps) {
   }, []);
 
   if (isLoading) return <h1>Loading...</h1>;
-  if (events.length == 0) return <h1>There are no events!</h1>;
+  if (events.length === 0) return <h1>There are no events!</h1>;
 
   return (
     <Container>
@@ -35,9 +36,8 @@ function EventList({ header }: EventListProps) {
       <ContentView>
         {events.map(
           (event: EventType) =>
-            event.markets.length > 0 && (
-              <EventCard key={event.id} event={event} />
-            )
+            event.markets.length > 0 &&
+            React.cloneElement(card, { key: event.id, event: event })
         )}
       </ContentView>
     </Container>

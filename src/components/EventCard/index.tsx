@@ -1,4 +1,4 @@
-import { EventType } from "ts/types";
+import { EventType, SelectedItemType } from "ts/types";
 
 import {
   Container,
@@ -11,10 +11,13 @@ import {
 import { WhiteButton } from "components/Button";
 
 interface EventCardProp {
-  event: EventType;
+  event?: EventType;
+  selectedItems: SelectedItemType[];
+  setSelectedItems: React.Dispatch<React.SetStateAction<SelectedItemType[]>>;
 }
 
-function EventCard({ event }: EventCardProp) {
+function EventCard({ event, setSelectedItems, selectedItems }: EventCardProp) {
+  if (!event) return null;
   return (
     <Container>
       <Header>
@@ -26,7 +29,39 @@ function EventCard({ event }: EventCardProp) {
           <MarketHeader>{market.name}</MarketHeader>
           <SelectionContainer>
             {market.selections.map((selection) => (
-              <WhiteButton>
+              <WhiteButton
+                key={selection.id}
+                className={
+                  // Check if market id and selection id are in the list of selections
+                  selectedItems
+                    .map((selected) => selected.market_id)
+                    .includes(market.id) &&
+                  selectedItems
+                    .map((selected) => selected.selection_id)
+                    .includes(selection.id)
+                    ? "selected"
+                    : ""
+                }
+                onClick={() => {
+                  setSelectedItems((prevState) => {
+                    // Remove the selected items that have the same market
+                    // so can't bet on selection from same market at the same time
+                    const removedSelectionFromSameMarket = prevState.filter(
+                      (selectedItem) => selectedItem.market_id !== market.id
+                    );
+                    return [
+                      ...removedSelectionFromSameMarket,
+                      {
+                        market_id: market.id,
+                        market_name: market.name,
+                        selection_id: selection.id,
+                        selection_name: selection.name,
+                        selection_price: selection.price,
+                      },
+                    ];
+                  });
+                }}
+              >
                 <p>{selection.name}</p>
                 <p>{selection.price}</p>
               </WhiteButton>

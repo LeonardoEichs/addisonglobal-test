@@ -21,3 +21,12 @@ export type SelectionType = {
   name: string;
   price: number;
 };
+
+// Selected Entity
+export type SelectedItemType = {
+  market_id: string;
+  market_name: string;
+  selection_id: string;
+  selection_name: string;
+  selection_price: number;
+};

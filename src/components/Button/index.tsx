@@ -28,6 +28,8 @@ type Props = {
   children: ReactNode;
   disabled?: boolean;
   isLoading?: boolean;
+  onClick?: any;
+  className?: string;
   size?: "small";
 };
 
