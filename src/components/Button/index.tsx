@@ -1,15 +1,6 @@
 import { ReactNode } from "react";
 
-import {
-  Container,
-  StyledButton,
-  StyledWhiteButton,
-  StyledDarkButton,
-} from "./styles";
-
-interface ButtonProps {
-  children: ReactNode;
-}
+import { StyledWhiteButton, StyledDarkButton } from "./styles";
 
 const ButtonWrapping = (Component: any, props: Props) => {
   const { children, disabled, isLoading, ...rest } = props;

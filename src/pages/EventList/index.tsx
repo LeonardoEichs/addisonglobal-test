@@ -1,10 +1,8 @@
-import React, { useEffect, useState, ReactNode, ReactElement } from "react";
+import React, { useEffect, useState, ReactElement } from "react";
 
-import { EventType, SelectedItemType } from "ts/types";
+import { EventType } from "ts/types";
 
 import { Container, ContentView } from "./styles";
-
-import EventCard from "components/EventCard";
 
 interface EventListProps {
   header: ReactElement;
