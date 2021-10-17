@@ -49,6 +49,13 @@ function EventCard({ event, setSelectedItems, selectedItems }: EventCardProp) {
                     const removedSelectionFromSameMarket = prevState.filter(
                       (selectedItem) => selectedItem.market_id !== market.id
                     );
+                    const arrayOfItself = prevState.filter(
+                      (selectedItem) =>
+                        selectedItem.market_id === market.id &&
+                        selectedItem.selection_id === selection.id
+                    );
+                    if (arrayOfItself.length > 0)
+                      return [...removedSelectionFromSameMarket];
                     return [
                       ...removedSelectionFromSameMarket,
                       {
